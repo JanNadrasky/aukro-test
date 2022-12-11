@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { map, Observable, ReplaySubject, Subject } from 'rxjs';
+import { map, Observable, ReplaySubject } from 'rxjs';
 import { IAukroItems } from 'src/app/interfaces/aukro-items.interface';
 import { JsonFetchService } from 'src/app/services/json-fetch.service';
 

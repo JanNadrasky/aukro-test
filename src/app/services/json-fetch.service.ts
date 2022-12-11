@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { filter, map, Observable, tap } from "rxjs";
+import { map, Observable } from "rxjs";
 import { ECategoriesType, IAukro, IAukroCategories, IAukroItems } from "../interfaces/aukro-items.interface";
 
 @Injectable({
