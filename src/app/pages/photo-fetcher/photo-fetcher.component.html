@@ -1,0 +1,23 @@
+<div class="photo-fetch">
+    <h1>Photo fetch</h1>
+    <div class="photo-fetch__photos-header">
+        <div class="photo-fetch__photos-header__switch-container">
+            <label class="switch">
+                <input type="checkbox" (change)="checkGreyscale($event)" />
+                <span class="slider round"></span>
+            </label>
+            <span>Černobíle</span>
+        </div>
+        <button (click)="loadPhotos()">Načíst nové fotografie</button>
+    </div>
+    <div *ngIf="$photoFetchData | async as photos" class="photo-fetch__photos">
+        <div *ngFor="let photo of photos" id="imageWrapper">
+            <ng-container *ngIf="greyscale$ | async as greyscale">
+                <img
+                    [ngClass]="{ greyscale: greyscale === 'greyscale' }"
+                    class="photo-fetch__photos--img"
+                    [src]="photo.images.lists.large[0].url" />
+            </ng-container>
+        </div>
+    </div>
+</div>

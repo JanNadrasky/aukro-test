@@ -1,0 +1,11 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "files.associations": {
+        ".xtm": "xml",
+        ".ngI18nconfig": "json"
+    },
+    "typescript.tsdk": "node_modules\\typescript\\lib"
+}
