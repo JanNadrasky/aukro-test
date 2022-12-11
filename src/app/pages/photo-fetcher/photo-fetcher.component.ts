@@ -21,7 +21,7 @@ export class PhotoFetcherComponent implements OnInit {
   public ngOnInit(): void {
     this.greyscale$.next('no-greyscale');
     this.loadData();
-    this.$mobile = this.breakpointObeserver.observe([Breakpoints.Handset, Breakpoints.Small]).pipe(map((observer) => {
+    this.$mobile = this.breakpointObeserver.observe([Breakpoints.Handset]).pipe(map((observer) => {
       return observer.matches;
     }));
   }
