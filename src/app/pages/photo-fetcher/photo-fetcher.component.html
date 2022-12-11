@@ -14,9 +14,15 @@
         <div *ngFor="let photo of photos" id="imageWrapper">
             <ng-container *ngIf="greyscale$ | async as greyscale">
                 <img
+                    *ngIf="($mobile | async) === false"
                     [ngClass]="{ greyscale: greyscale === 'greyscale' }"
                     class="photo-fetch__photos--img"
                     [src]="photo.images.lists.large[0].url" />
+                <img
+                    *ngIf="($mobile | async) === true"
+                    [ngClass]="{ greyscale: greyscale === 'greyscale' }"
+                    class="photo-fetch__photos--img"
+                    [src]="photo.images.lists.medium[0].url" />
             </ng-container>
         </div>
     </div>

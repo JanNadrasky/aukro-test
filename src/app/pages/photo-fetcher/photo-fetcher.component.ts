@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { map, Observable, ReplaySubject } from 'rxjs';
 import { IAukroItems } from 'src/app/interfaces/aukro-items.interface';
 import { JsonFetchService } from 'src/app/services/json-fetch.service';
@@ -13,13 +13,17 @@ import { JsonFetchService } from 'src/app/services/json-fetch.service';
 export class PhotoFetcherComponent implements OnInit {
 
   $photoFetchData!: Observable<IAukroItems[]>;
+  $mobile!: Observable<boolean>;
   greyscale$: ReplaySubject<string> = new ReplaySubject<string>();
 
-  constructor(private jsonFetchService: JsonFetchService, @Inject(DOCUMENT) private document: Document) { }
+  constructor(private jsonFetchService: JsonFetchService, public breakpointObeserver: BreakpointObserver) { }
 
   public ngOnInit(): void {
     this.greyscale$.next('no-greyscale');
     this.loadData();
+    this.$mobile = this.breakpointObeserver.observe([Breakpoints.Handset, Breakpoints.Small]).pipe(map((observer) => {
+      return observer.matches;
+    }));
   }
 
   public loadPhotos(): void {
